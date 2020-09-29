@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/action_home"
+        android:enabled="true"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="홈"/>
+
+    <item
+        android:id="@+id/action_examination"
+        android:enabled="true"
+        android:icon="@drawable/ic_search_black_24dp"
+        android:title="검사"/>
+
+    <item
+        android:id="@+id/action_MBTI"
+        android:enabled="true"
+        android:icon="@drawable/ic_launcher_background"
+        android:title="MBTI"/>
+
+    <item
+        android:id="@+id/action_date"
+        android:enabled="true"
+        android:icon="@drawable/ic_chat_bubble_black_24dp"
+        android:title="소개팅"/>
+
+    <item
+        android:id="@+id/action_mypage"
+        android:enabled="true"
+        android:icon="@drawable/ic_person_black_24dp"
+        android:title="마이페이지"/>
+
+
+</menu>
