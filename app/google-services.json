@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "33957197643",
+    "firebase_url": "https://mbti-project-966bf.firebaseio.com",
+    "project_id": "mbti-project-966bf",
+    "storage_bucket": "mbti-project-966bf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:33957197643:android:d4a87ac9cda79118579ace",
+        "android_client_info": {
+          "package_name": "com.example.pro_1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "33957197643-4chd9kpomd967ptavat6qirsug63u11p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.pro_1",
+            "certificate_hash": "b8159e79a580a5298c34143b2398ed7cef35833f"
+          }
+        },
+        {
+          "client_id": "33957197643-1in7ni56dtkrvfq275rtemo34ugadm6o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAmWTswkVQ2bbkpjqPrBx_uSUlyEzQ99WA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "33957197643-1in7ni56dtkrvfq275rtemo34ugadm6o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
