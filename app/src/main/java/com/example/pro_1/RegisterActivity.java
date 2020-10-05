@@ -2,6 +2,7 @@ package com.example.pro_1;
 
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -10,12 +11,18 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import org.json.JSONObject;
 
@@ -30,11 +37,17 @@ public class RegisterActivity extends AppCompatActivity {
     private String userMBTI;
     private AlertDialog dialog;
     private boolean validate = false;
+    private FirebaseAuth mAuth;
+    private final String TAG="asd";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+
+        mAuth = FirebaseAuth.getInstance();
+        findViewById(R.id.checkButton).setOnClickListener(onClickListener);
+
 
         spinner = (Spinner) findViewById(R.id.liveSpinner);
         adapter = ArrayAdapter.createFromResource(this,R.array.mbti, android.R.layout.simple_spinner_dropdown_item);
@@ -114,8 +127,44 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        moveTaskToBack(true);
+        android.os.Process.killProcess(android.os.Process.myPid());
+        System.exit(1);
+    }
+
+    View.OnClickListener onClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()){
+                case R.id.checkButton:
+                    signUp();
+                    break;
+            }
+        }
+    };
+
+    private void signUp() {
+        String email = ((EditText)findViewById(R.id.idText)).getText().toString();
+        String password = ((EditText)findViewById(R.id.passwordText)).getText().toString();
+        mAuth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            FirebaseUser user = mAuth.getCurrentUser();
+                        } else {
+                            Log.w(TAG,task.getException());
+                        }
+                    }
+                });
+    }
+
+
+    @Override
     protected void onStop() {
-        super .onStop();
+        super.onStop();
         if(dialog != null)
         {
             dialog.dismiss();
