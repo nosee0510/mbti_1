@@ -8,16 +8,21 @@ import android.widget.EditText;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 
 import static com.example.pro_1.Util.showToast;
 
 public class LoginActivity1 extends AppCompatActivity {
     private FirebaseAuth mAuth;
+    private DatabaseReference mDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,10 +30,13 @@ public class LoginActivity1 extends AppCompatActivity {
         setContentView(R.layout.activity_login1);
 
         mAuth = FirebaseAuth.getInstance();
+        mDatabase = FirebaseDatabase.getInstance().getReference();
 
         findViewById(R.id.loginButton).setOnClickListener(onClickListener);
         findViewById(R.id.gotoPasswordResetButton).setOnClickListener(onClickListener);
     }
+
+
 
     @Override
     public void onBackPressed() {
@@ -53,8 +61,8 @@ public class LoginActivity1 extends AppCompatActivity {
     };
 
     private void login() {
-        String email = ((EditText) findViewById(R.id.emailEditText)).getText().toString();
-        String password = ((EditText) findViewById(R.id.passwordEditText)).getText().toString();
+        final String email = ((EditText) findViewById(R.id.emailEditText)).getText().toString();
+        final String password = ((EditText) findViewById(R.id.passwordEditText)).getText().toString();
 
         if (email.length() > 0 && password.length() > 0) {
             mAuth.signInWithEmailAndPassword(email, password)
@@ -64,7 +72,9 @@ public class LoginActivity1 extends AppCompatActivity {
                             if (task.isSuccessful()) {
                                 FirebaseUser user = mAuth.getCurrentUser();
                                 showToast(LoginActivity1.this, "로그인에 성공하였습니다.");
-                                myStartActivity(MainActivity.class);
+                                Intent intent = new Intent(LoginActivity1.this, MainActivity.class);
+                                intent.putExtra("email", email);
+                                startActivity(intent);
                             } else {
                                 if (task.getException() != null) {
                                     showToast(LoginActivity1.this, task.getException().toString());
@@ -81,5 +91,10 @@ public class LoginActivity1 extends AppCompatActivity {
         Intent intent = new Intent(this, c);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
+    }
+    private void writeNewUser(String userId, String name, String email) {
+        User user = new User(name, email);
+
+        mDatabase.child("users").child(userId).setValue(user);
     }
 }

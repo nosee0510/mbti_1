@@ -4,10 +4,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.viewpager.widget.PagerAdapter;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -25,17 +27,21 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import static com.example.pro_1.Util.showToast;
+
 public class MainActivity extends AppCompatActivity {
 
 
     private BottomNavigationView bottomNavigationView; //바텀 네비
     private FragmentManager fm;
     private FragmentTransaction ft;
+    PagerAdapter pagerAdapter;
     private Frag1 frag1;
     private Frag2 frag2;
     private Frag3 frag3;
     private Frag4 frag4;
     private Frag5 frag5;
+
     Toolbar toolbar;
     private static final String TAG = "MainActivity";
 
@@ -45,20 +51,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
-        if(user != null){
-            myStartActivity(SignUpActivity.class);
-        }else{
-            for(UserInfo profile : user.getProviderData()){
-                String name = profile.getDisplayName();
-                Log.e("이름: ", "이름:" +name);
-                if(name !=null){
-                    if(name.length()==0){
-                        myStartActivity(MemberinitActivity.class);
-                    }
-                }
+
+        if(firebaseUser != null){
+            if (firebaseUser != null){
+                String name = firebaseUser.getDisplayName();
+                String email = firebaseUser.getEmail();
+                showToast(MainActivity.this,"이름: "+name+"이메일: "+email);
             }
+        }else {
+            myStartActivity(SignUpActivity.class);
+
         }
 
 
@@ -149,7 +153,7 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void myStartActivity(Class c) {
+    public void myStartActivity(Class c) {
         Intent intent = new Intent(this, c);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);

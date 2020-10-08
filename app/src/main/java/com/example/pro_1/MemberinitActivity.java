@@ -10,11 +10,14 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import static com.example.pro_1.Util.showToast;
 
@@ -49,30 +52,34 @@ public class MemberinitActivity extends AppCompatActivity {
     };
 
     private void profileUpdate() {
-        String name = ((EditText) findViewById(R.id.emailEditText)).getText().toString();
-        if (name.length() > 0) {
+        String name = ((EditText) findViewById(R.id.nameEditText)).getText().toString();
+        String mbti = ((EditText)findViewById(R.id.mbtiEditText)).getText().toString();
+        String birthDay = ((EditText)findViewById(R.id.dateEditText)).getText().toString();
+        String address = ((EditText)findViewById(R.id.addressEditText)).getText().toString();
+        if(name.length() > 0 && mbti.length() > 4 && birthDay.length() > 5 && address.length() > 0){
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            FirebaseFirestore db = FirebaseFirestore.getInstance();
+            final MemberInfo memberInfo = new MemberInfo(name, mbti, birthDay, address);
+            if(user != null){
+                db.collection("users").document(user.getUid()).set(memberInfo)
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                showToast(MemberinitActivity.this,"회원정보 등록을 성공하였습니다.");
+                                finish();
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                showToast(MemberinitActivity.this,"회원정보 등록에 실패하였습니다.");
 
-            UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
-                    .setDisplayName(name)
-                    .build();
+                            }
+                        });
+            }
 
-                if (user != null) {
-                    user.updateProfile(profileUpdates)
-                            .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    if (task.isSuccessful()) {
-                                        showToast(MemberinitActivity.this, "회원 정보 등록에 성공하였습니다.");
-                                        finish();
-                                    }
-                                }
-                            });
-                }
-                else {
-                    showToast(MemberinitActivity.this, "회원정보를 입력해주세요.");
-                }
-
+        }else {
+            showToast(MemberinitActivity.this,"회원정보를 입력해주세요.");
         }
     }
 
