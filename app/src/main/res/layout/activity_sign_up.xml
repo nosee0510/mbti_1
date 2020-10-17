@@ -27,6 +27,14 @@
             android:padding="10dp">
 
             <EditText
+                android:id="@+id/userEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="아이디"
+                android:inputType="textPersonName" />
+
+            <EditText
                 android:id="@+id/emailEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -52,6 +60,14 @@
                 android:ems="10"
                 android:hint="비밀번호 확인"
                 android:inputType="textPassword" />
+
+            <EditText
+                android:id="@+id/mbtiEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="MBTI"
+                android:inputType="textPersonName" />
 
             <Button
                 android:id="@+id/registerButton"

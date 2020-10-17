@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/ISTJ"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="172dp"
+        android:backgroundTint="#F8B7CE"
+        android:text="ISTJ"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/ISTP"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="272dp"
+        android:backgroundTint="#FD1E6A"
+        android:text="ISTP"
+        android:textColor="#FFFFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/ISFP"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginStart="112dp"
+        android:layout_marginTop="272dp"
+        android:backgroundTint="#F8B7CE"
+        android:text="ISFP"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/ESFP"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginStart="112dp"
+        android:layout_marginTop="368dp"
+        android:backgroundTint="#FD1E6A"
+        android:text="ESFP"
+        android:textColor="#FFFFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/ENFP"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginStart="212dp"
+        android:layout_marginTop="368dp"
+        android:backgroundTint="#F8B7CE"
+        android:text="ENFP"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/INFP"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginStart="212dp"
+        android:layout_marginTop="272dp"
+        android:backgroundTint="#FD1E6A"
+        android:text="INFP"
+        android:textColor="#FFFFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/INTP"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginStart="312dp"
+        android:layout_marginTop="272dp"
+        android:backgroundTint="#F8B7CE"
+        android:text="INTP"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/ENTP"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginStart="312dp"
+        android:layout_marginTop="368dp"
+        android:backgroundTint="#FD1E6A"
+        android:text="ENTP"
+        android:textColor="#FFFFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/ESTP"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="368dp"
+        android:backgroundTint="#F8B7CE"
+        android:text="ESTP"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/ESTJ"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="468dp"
+        android:backgroundTint="#FD1E6A"
+        android:text="ESTJ"
+        android:textColor="#FFFFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/ESFJ"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginStart="112dp"
+        android:layout_marginTop="468dp"
+        android:backgroundTint="#F8B7CE"
+        android:text="ESFJ"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/ENFJ"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginStart="212dp"
+        android:layout_marginTop="468dp"
+        android:backgroundTint="#FD1E6A"
+        android:text="ENFJ"
+        android:textColor="#FFFFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/ENTJ"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginStart="312dp"
+        android:layout_marginTop="468dp"
+        android:backgroundTint="#F8B7CE"
+        android:text="ENTJ"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/ISFJ"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginStart="112dp"
+        android:layout_marginTop="172dp"
+        android:backgroundTint="#FD1E6A"
+        android:text="ISFJ"
+        android:textColor="#FFFFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/INTJ"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginStart="312dp"
+        android:layout_marginTop="172dp"
+        android:backgroundTint="#FD1E6A"
+        android:text="INTJ"
+        android:textColor="#FFFFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/INFJ"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginStart="212dp"
+        android:layout_marginTop="172dp"
+        android:backgroundTint="#F8B7CE"
+        android:text="INFJ"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:text="당신의 성격은?"
+        android:textColor="#CD1554"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/INFJ"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

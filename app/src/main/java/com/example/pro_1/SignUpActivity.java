@@ -14,12 +14,18 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.HashMap;
+
 import static com.example.pro_1.Util.showToast;
 
 public class SignUpActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
+    DatabaseReference myRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,9 +61,11 @@ public class SignUpActivity extends AppCompatActivity {
     };
 
     private void signUp() {
+        final String username = ((EditText)findViewById(R.id.userEditText)).getText().toString();
         String email = ((EditText)findViewById(R.id.emailEditText)).getText().toString();
         String password = ((EditText)findViewById(R.id.passwordEditText)).getText().toString();
         String passwordCheck = ((EditText)findViewById(R.id.passwordCheckEditText)).getText().toString();
+        final String mbti = ((EditText)findViewById(R.id.mbtiEditText)).getText().toString();
 
         if(email.length() > 0 && password.length() > 0 && passwordCheck.length() > 0){
             if(password.equals(passwordCheck)){
@@ -67,8 +75,28 @@ public class SignUpActivity extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
                                     FirebaseUser user = mAuth.getCurrentUser();
-                                    startToast("회원가입에 성공하였습니다.");
-                                    myStartActivity(MainActivity.class);
+                                    String userid = user.getUid();
+                                    myRef = FirebaseDatabase.getInstance()
+                                            .getReference("MyUsers")
+                                            .child(userid);
+                                    HashMap<String, String> hashMap = new HashMap<>();
+                                    hashMap.put("id",userid);
+                                    hashMap.put("username",username);
+                                    hashMap.put("mbti", mbti);
+                                    hashMap.put("imageURL","default");
+                                    myRef.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+
+                                            if (task.isSuccessful()){
+                                                myStartActivity(Main2Activity.class);
+                                                startToast("회원가입에 성공하였습니다.");
+                                                finish();
+                                            }
+
+                                        }
+                                    });
+
                                 } else {
                                     if(task.getException() != null){
                                         startToast(task.getException().toString());

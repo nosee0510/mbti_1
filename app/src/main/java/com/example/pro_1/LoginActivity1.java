@@ -21,16 +21,36 @@ import com.google.firebase.database.FirebaseDatabase;
 import static com.example.pro_1.Util.showToast;
 
 public class LoginActivity1 extends AppCompatActivity {
-    private FirebaseAuth mAuth;
+    FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
+    FirebaseUser firebaseUser;
+
+
+    @Override
+    protected  void onStart(){
+        super.onStart();
+        firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
+
+        if(firebaseUser != null){
+            myStartActivity(Main2Activity.class);
+            finish();
+
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login1);
-
         mAuth = FirebaseAuth.getInstance();
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+
         mDatabase = FirebaseDatabase.getInstance().getReference();
+
+        if(firebaseUser != null){
+            myStartActivity(Main2Activity.class);
+            finish();
+        }
 
         findViewById(R.id.loginButton).setOnClickListener(onClickListener);
         findViewById(R.id.gotoPasswordResetButton).setOnClickListener(onClickListener);
@@ -70,9 +90,9 @@ public class LoginActivity1 extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
-                                FirebaseUser user = mAuth.getCurrentUser();
+                                FirebaseUser firebaseUser = mAuth.getCurrentUser();
                                 showToast(LoginActivity1.this, "로그인에 성공하였습니다.");
-                                Intent intent = new Intent(LoginActivity1.this, MainActivity.class);
+                                Intent intent = new Intent(LoginActivity1.this, Main2Activity.class);
                                 intent.putExtra("email", email);
                                 startActivity(intent);
                             } else {
@@ -92,9 +112,5 @@ public class LoginActivity1 extends AppCompatActivity {
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }
-    private void writeNewUser(String userId, String name, String email) {
-        User user = new User(name, email);
 
-        mDatabase.child("users").child(userId).setValue(user);
-    }
 }
