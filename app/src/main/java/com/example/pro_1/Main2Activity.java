@@ -16,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.pro_1.Fragments.ChatsFragment;
+import com.example.pro_1.Fragments.ProfileFragment;
 import com.example.pro_1.Fragments.TypesFragment;
 import com.example.pro_1.Fragments.TestFragment;
 import com.example.pro_1.Fragments.MatchingFragment;
@@ -78,6 +79,7 @@ public class Main2Activity extends AppCompatActivity {
         viewPagerAdapter.addFragment(new MatchingFragment(), "심쿵매칭");
         viewPagerAdapter.addFragment(new ChatsFragment(), "채팅");
         viewPagerAdapter.addFragment(new UsersFragment(), "유저목록");
+        viewPagerAdapter.addFragment(new ProfileFragment(), "프로필");
 
 
 
