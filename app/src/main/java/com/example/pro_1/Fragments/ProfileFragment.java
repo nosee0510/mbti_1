@@ -199,7 +199,7 @@ public class ProfileFragment extends Fragment{
             imageUri = data.getData();
 
             if(uploadTask != null && uploadTask.isInProgress()){
-                Toast.makeText(getContext(), "업로드 하는 중 입니다.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "업로드 하는 중 입니다...", Toast.LENGTH_SHORT).show();
 
             }else{
                 UploadMyImage();;
