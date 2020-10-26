@@ -35,6 +35,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class MessageActivity extends AppCompatActivity {
+    DatabaseReference myRef;
 
 
     TextView username;
@@ -183,6 +184,27 @@ public class MessageActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void CheckStatus(String status){
+        myRef = FirebaseDatabase.getInstance().getReference("MyUsers").child(firebaseUser.getUid());
+
+        HashMap<String, Object> hashMap = new HashMap<>();
+        hashMap.put("status", status);
+
+        myRef.updateChildren(hashMap);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        CheckStatus("online");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        CheckStatus("offline");
     }
 
 

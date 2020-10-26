@@ -14,6 +14,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.pro_1.R;
+import com.example.pro_1.test1;
 
 public class TestFragment extends Fragment {
     private View view;
@@ -23,21 +24,22 @@ public class TestFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_test, container, false);
-        Button button = (Button) view.findViewById(R.id.button1);
-        button.setOnClickListener(new View.OnClickListener()
-        {
 
-            public void onClick(View v)
-            {
+
+        Button button = (Button) view.findViewById(R.id.testBtn);
+        button.setOnClickListener(new View.OnClickListener() {
+            // 요청을 보내야 하는데 메인 액티비티에 다가 메소드를 하나 만들어야 한다.
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), test1.class);
                 Toast.makeText(getContext(), "검사창으로 이동중입니다", Toast.LENGTH_LONG).show();
-                String url = "https://www.16personalities.com/ko/%EB%AC%B4%EB%A3%8C-%EC%84%B1%EA%B2%A9-%EC%9C%A0%ED%98%95-%EA%B2%80%EC%82%AC";
-                Intent i = new Intent(Intent.ACTION_VIEW);
-                i.setData(Uri.parse(url));
-                startActivity(i);
+                startActivity(intent);
             }
-
         });
+
+
         return view;
     }
+
 
 }

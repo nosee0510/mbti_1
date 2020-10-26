@@ -83,7 +83,7 @@ public class UsersFragment extends Fragment {
                         mUsers.add(user);
                     }
 
-                    userAdapter = new UserAdapter(getContext(), mUsers, true, mRequestManager);
+                    userAdapter = new UserAdapter(getContext(), mUsers, false);
                     recyclerView.setAdapter(userAdapter);
                 }
 

@@ -103,7 +103,7 @@ public class ProfileFragment extends Fragment{
                     imageView.setImageResource(R.mipmap.ic_launcher);
 
                 }else {
-                    mRequestManager
+                    Glide.with(getContext())
                             .load(user.getImageURL())
                             .circleCrop()
                             .into(imageView);

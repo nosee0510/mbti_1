@@ -27,14 +27,12 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     private Context context;
     private List<Users> mUsers;
     private boolean isChat;
-    private RequestManager mRequestManager;
 
     //Constructor
-    public UserAdapter(Context context, List<Users> mUsers, Boolean isChat, RequestManager requestManager){
+    public UserAdapter(Context context, List<Users> mUsers, Boolean isChat){
         this.context = context;
         this.mUsers = mUsers;
         this.isChat = isChat;
-        mRequestManager= requestManager;
 
 
     }
@@ -59,7 +57,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
         }else{
             //Adding Glide Library
-             mRequestManager
+             Glide.with(context)
                     .load(users.getImageURL())
                     .circleCrop()
                     .into(holder.imageView);

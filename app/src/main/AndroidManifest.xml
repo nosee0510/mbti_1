@@ -13,6 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".test1"></activity>
         <activity android:name=".MessageActivity" />
         <activity android:name=".MBTI_Types.enfp" />
         <activity android:name=".MBTI_Types.enfj" />
@@ -29,10 +30,11 @@
         <activity android:name=".MBTI_Types.infj" />
         <activity android:name=".MBTI_Types.isfj" />
         <activity android:name=".MBTI_Types.istj" />
+        <activity android:name=".LoginActivity1"/>
         <activity
             android:name=".Main2Activity"
             android:theme="@style/AppTheme2" />
-        <activity android:name=".LoginActivity1">
+        <activity android:name=".SignUpActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -50,6 +52,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".PasswordResetActivity" />
+
 
         <meta-data
             android:name="preloaded_fonts"
