@@ -6,17 +6,19 @@ public class Users {
     private String username;
     private String imageURL;
     private String mbti;
+    private String status;
 
 
     public Users() {
 
     }
 
-    public Users(String id, String username, String imageURL, String mbti){
+    public Users(String id, String username, String imageURL, String mbti, String status){
         this.id = id;
         this.username = username;
         this.imageURL = imageURL;
         this.mbti = mbti;
+        this.status = status;
     }
 
 
@@ -53,5 +55,13 @@ public class Users {
 
     public void setMbti(String mbti) {
         this.mbti = mbti;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

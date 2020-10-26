@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.OvalShape;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -34,6 +36,7 @@ import java.util.List;
 
 public class MessageActivity extends AppCompatActivity {
 
+
     TextView username;
     ImageView imageView;
     ImageButton sendBtn;
@@ -57,6 +60,8 @@ public class MessageActivity extends AppCompatActivity {
 
         //위젯
         imageView = findViewById(R.id.imageview_profile);
+
+
         username = findViewById(R.id.usernamey);
         sendBtn=findViewById(R.id.btn_send);
         msg_editText=findViewById(R.id.text_send);
@@ -88,6 +93,7 @@ public class MessageActivity extends AppCompatActivity {
                 }else{
                     Glide.with(MessageActivity.this)
                             .load(user.getImageURL())
+                            .circleCrop()
                             .into(imageView);
                 }
 
@@ -178,4 +184,7 @@ public class MessageActivity extends AppCompatActivity {
             }
         });
     }
+
+
+
 }

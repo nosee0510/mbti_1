@@ -10,6 +10,8 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.RequestManager;
 import com.example.pro_1.Adapter.UserAdapter;
 import com.example.pro_1.Model.ChatList;
 import com.example.pro_1.R;
@@ -34,11 +36,22 @@ public class ChatsFragment extends Fragment {
     private RecyclerView recyclerView;
     private UserAdapter userAdapter;
     private List<Users> mUsers;
+    private RequestManager mRequestManager;
 
     FirebaseUser firebaseUser;
     DatabaseReference reference;
 
     private List<ChatList> usersList;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+
+        mRequestManager = Glide.with(this);
+    }
+
+
 
     public ChatsFragment() {
         // Required empty public constructor
@@ -85,6 +98,7 @@ public class ChatsFragment extends Fragment {
     }
 
     private void chatList() {
+
         //Getting all chats:
         mUsers = new ArrayList<>();
         reference = FirebaseDatabase.getInstance().getReference("MyUsers");
@@ -104,7 +118,7 @@ public class ChatsFragment extends Fragment {
 
                     }
                 }
-                userAdapter = new UserAdapter(getContext(), mUsers);
+                userAdapter = new UserAdapter(getContext(), mUsers, true, mRequestManager);
                 recyclerView.setAdapter(userAdapter);
 
             }

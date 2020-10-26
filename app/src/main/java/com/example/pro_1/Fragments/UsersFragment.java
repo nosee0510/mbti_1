@@ -10,6 +10,8 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.RequestManager;
 import com.example.pro_1.Adapter.UserAdapter;
 import com.example.pro_1.R;
 import com.example.pro_1.Model.Users;
@@ -32,10 +34,20 @@ public class UsersFragment extends Fragment {
     private RecyclerView recyclerView;
     private UserAdapter userAdapter;
     private List<Users> mUsers;
+    public RequestManager mRequestManager;
 
     public UsersFragment() {
         // Required empty public constructor
     }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+
+        mRequestManager = Glide.with(this);
+    }
+
 
 
     @Override
@@ -60,19 +72,21 @@ public class UsersFragment extends Fragment {
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
                 mUsers.clear();
 
-                for(DataSnapshot snapshot: dataSnapshot.getChildren()){
+                for(DataSnapshot snapshot: dataSnapshot.getChildren()) {
                     Users user = snapshot.getValue(Users.class);
 
                     assert user != null;
-                    if(!user.getId().equals(firebaseuser.getUid())){
+                    if (!user.getId().equals(firebaseuser.getUid())) {
                         mUsers.add(user);
                     }
 
-                    userAdapter = new UserAdapter(getContext(), mUsers);
+                    userAdapter = new UserAdapter(getContext(), mUsers, true, mRequestManager);
                     recyclerView.setAdapter(userAdapter);
                 }
+
             }
 
             @Override

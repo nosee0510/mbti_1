@@ -4,6 +4,9 @@ import android.app.ExpandableListActivity;
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.Intent;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.OvalShape;
 import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
@@ -20,6 +23,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.RequestManager;
 import com.example.pro_1.Model.Users;
 import com.example.pro_1.R;
 import com.google.android.gms.tasks.Continuation;
@@ -48,12 +52,22 @@ public class ProfileFragment extends Fragment{
 
     DatabaseReference reference;
     FirebaseUser firebaseUser;
+    RequestManager mRequestManager;
 
     //Profile Image
     StorageReference storageReference;
     private static final int IMAGE_REQUEST = 1;
     private Uri imageUri;
     private StorageTask uploadTask;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+
+        mRequestManager = Glide.with(this);
+    }
+
 
 
 
@@ -65,6 +79,9 @@ public class ProfileFragment extends Fragment{
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
         imageView = view.findViewById(R.id.profile_image2);
+        imageView.setBackground(new ShapeDrawable(new OvalShape()));
+        imageView.setClipToOutline(true);
+
         username = view.findViewById(R.id.username_profile); //fragment_profile
 
 
@@ -86,7 +103,10 @@ public class ProfileFragment extends Fragment{
                     imageView.setImageResource(R.mipmap.ic_launcher);
 
                 }else {
-                    Glide.with(getContext()).load(user.getImageURL()).into(imageView);
+                    mRequestManager
+                            .load(user.getImageURL())
+                            .circleCrop()
+                            .into(imageView);
                 }
 
 

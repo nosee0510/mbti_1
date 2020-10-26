@@ -1,6 +1,7 @@
 package com.example.pro_1.Adapter;
 
 import android.content.Context;
+import android.graphics.drawable.shapes.OvalShape;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -64,7 +65,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
         if(imageURL.equals("default")){
             holder.profile_image.setImageResource(R.mipmap.ic_launcher);
         }else{
-            Glide.with(context).load(imageURL).into(holder.profile_image);
+            Glide.with(context).load(imageURL).circleCrop().into(holder.profile_image);
         }
     }
 

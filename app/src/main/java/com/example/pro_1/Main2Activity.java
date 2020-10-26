@@ -1,5 +1,6 @@
 package com.example.pro_1;
 
+import androidx.annotation.IntegerRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -33,8 +34,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Main2Activity extends AppCompatActivity {
+    private BackPressedForFinish backPressedForFinish;
 
     FirebaseUser FirebaseUser;
     DatabaseReference myRef;
@@ -52,9 +55,11 @@ public class Main2Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
+        backPressedForFinish = new BackPressedForFinish(this);
+
         FirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        myRef = FirebaseDatabase.getInstance().getReference("Users").child(FirebaseUser.getUid());
-        myRef.addValueEventListener(new ValueEventListener() {
+        //myRef = FirebaseDatabase.getInstance().getReference("Users").child(FirebaseUser.getUid());
+        /*myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Users users = dataSnapshot.getValue(Users.class);
@@ -65,7 +70,7 @@ public class Main2Activity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
-        });
+        });*/
 
         // Tab Layout and ViewPager
         TabLayout tabLayout = findViewById(R.id.tabLayout);
@@ -106,8 +111,8 @@ public class Main2Activity extends AppCompatActivity {
 
             case R.id.logout:
                 FirebaseAuth.getInstance().signOut();
-                myStartActivity(LoginActivity1.class);
-                finish();
+                startActivity(new Intent(Main2Activity.this,LoginActivity1.class)
+                        .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
                 return true;
         }
         return false;
@@ -147,8 +152,9 @@ public class Main2Activity extends AppCompatActivity {
         public CharSequence getPageTitle(int position) {
             return titles.get(position);
         }
-    }
 
+
+    }
 
 
     public void myStartActivity(Class c) {
@@ -156,5 +162,41 @@ public class Main2Activity extends AppCompatActivity {
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }
+
+    private void CheckStatus(String status){
+        myRef = FirebaseDatabase.getInstance().getReference("MyUsers").child(FirebaseUser.getUid());
+
+        HashMap<String, Object> hashMap = new HashMap<>();
+        hashMap.put("status", status);
+
+        myRef.updateChildren(hashMap);
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        CheckStatus("online");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        CheckStatus("offline");
+    }
+
+
+
+    @Override
+    public void onBackPressed() {
+
+        // BackPressedForFinish 클래시의 onBackPressed() 함수를 호출한다.
+        backPressedForFinish.onBackPressed();
+
+    }
+
+
+
+
 
 }

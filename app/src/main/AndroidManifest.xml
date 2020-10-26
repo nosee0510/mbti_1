@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -12,8 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".MessageActivity"></activity>
-        <activity android:name=".MBTI_Types.enfp"></activity>
+        <activity android:name=".MessageActivity" />
+        <activity android:name=".MBTI_Types.enfp" />
         <activity android:name=".MBTI_Types.enfj" />
         <activity android:name=".MBTI_Types.esfj" />
         <activity android:name=".MBTI_Types.estj" />
@@ -28,11 +29,10 @@
         <activity android:name=".MBTI_Types.infj" />
         <activity android:name=".MBTI_Types.isfj" />
         <activity android:name=".MBTI_Types.istj" />
-
-
-        <activity android:name=".Main2Activity"
-            android:theme="@style/AppTheme2"/>
-        <activity android:name=".SignUpActivity">
+        <activity
+            android:name=".Main2Activity"
+            android:theme="@style/AppTheme2" />
+        <activity android:name=".LoginActivity1">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -49,8 +49,11 @@
                     android:scheme="http" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity1" />
         <activity android:name=".PasswordResetActivity" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>
