@@ -1,11 +1,18 @@
 package com.example.pro_1.Fragments;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresPermission;
+import androidx.core.view.MenuItemCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -48,6 +55,42 @@ public class UsersFragment extends Fragment {
         mRequestManager = Glide.with(this);
     }
 
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater){
+        inflater.inflate(R.menu.menu, menu);
+        MenuItem item = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) MenuItemCompat.getActionView(item);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener(){
+           @Override
+           public boolean onQueryTextSubmit (String s) {
+               if(!TextUtils.isEmpty(s.trim())) {
+                   searchUsers(s);
+               }
+               else{
+                   ReadUsers();
+               }
+               return true;
+           }
+
+            @Override
+            public boolean onQueryTextChange (String s) {
+                if(!TextUtils.isEmpty(s.trim())) {
+                    searchUsers(s);
+                }
+                else{
+                    ReadUsers();
+                }
+                return true;
+            }
+
+        });
+
+
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+
+
 
 
     @Override
@@ -66,7 +109,7 @@ public class UsersFragment extends Fragment {
     }
 
     private void ReadUsers(){
-        final FirebaseUser firebaseuser = FirebaseAuth.getInstance().getCurrentUser();
+        FirebaseUser firebaseuser = FirebaseAuth.getInstance().getCurrentUser();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("MyUsers");
 
         reference.addValueEventListener(new ValueEventListener() {
@@ -78,7 +121,6 @@ public class UsersFragment extends Fragment {
                 for(DataSnapshot snapshot: dataSnapshot.getChildren()) {
                     Users user = snapshot.getValue(Users.class);
 
-                    assert user != null;
                     if (!user.getId().equals(firebaseuser.getUid())) {
                         mUsers.add(user);
                     }
@@ -94,5 +136,40 @@ public class UsersFragment extends Fragment {
 
             }
         });
+    }
+    private void searchUsers(String query){
+        FirebaseUser firebaseuser = FirebaseAuth.getInstance().getCurrentUser();
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("MyUsers");
+
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                mUsers.clear();
+
+                for(DataSnapshot snapshot: dataSnapshot.getChildren()) {
+                    Users user = snapshot.getValue(Users.class);
+
+                    if (!user.getId().equals(firebaseuser.getUid())) {
+                        if(user.getMbti().toLowerCase().contains(query.toLowerCase())||
+                                user.getUsername().toLowerCase().contains(query.toLowerCase())) {
+                            mUsers.add(user);
+                        }
+                    }
+
+                    userAdapter = new UserAdapter(getContext(), mUsers, false);
+                    userAdapter.notifyDataSetChanged();
+                    recyclerView.setAdapter(userAdapter);
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
     }
 }

@@ -10,12 +10,12 @@
 
     <ImageView
         android:id="@+id/splash_image"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="474dp"
+        android:layout_height="458dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="88dp"
         android:layout_marginEnd="10dp"
-        android:src="@drawable/splash_mbti_1"
+        android:src="@drawable/main"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -25,9 +25,10 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:fontFamily="@font/bangers"
-        android:text="What's your MBTI?"
+        android:text="MBTI＊LOVE MATCHING SERVICE "
         android:textAlignment="center"
-        android:textSize="55sp"
+        android:textColor="#FD99B5"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/splash_image" />
@@ -37,9 +38,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/antic"
-        android:text="Team: Americano"
+        android:text="당신의 연인을 찾아드려요."
         android:textAlignment="center"
-        android:textSize="18sp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Name_textView" />

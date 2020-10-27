@@ -3,6 +3,8 @@
     package="com.example.pro_1">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
 
@@ -13,6 +15,24 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+
+        <activity android:name=".SignUpActivity"/>
+        <activity android:name=".entjj"></activity>
+        <activity android:name=".enfjj" />
+        <activity android:name=".esfjj" />
+        <activity android:name=".estjj" />
+        <activity android:name=".entpp" />
+        <activity android:name=".enfpp" />
+        <activity android:name=".esfpp" />
+        <activity android:name=".estpp" />
+        <activity android:name=".intpp" />
+        <activity android:name=".infpp" />
+        <activity android:name=".isfpp" />
+        <activity android:name=".istpp" />
+        <activity android:name=".intjj" />
+        <activity android:name=".infjj" />
+        <activity android:name=".isfjj" />
+        <activity android:name=".istjj" />
         <activity android:name=".test1"></activity>
         <activity android:name=".MessageActivity" />
         <activity android:name=".MBTI_Types.enfp" />
@@ -34,7 +54,7 @@
         <activity
             android:name=".Main2Activity"
             android:theme="@style/AppTheme2" />
-        <activity android:name=".SignUpActivity">
+        <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -65,7 +65,6 @@ public class SignUpActivity extends AppCompatActivity {
         String email = ((EditText)findViewById(R.id.emailEditText)).getText().toString();
         String password = ((EditText)findViewById(R.id.passwordEditText)).getText().toString();
         String passwordCheck = ((EditText)findViewById(R.id.passwordCheckEditText)).getText().toString();
-        final String mbti = ((EditText)findViewById(R.id.mbtiEditText)).getText().toString();
 
         if(email.length() > 0 && password.length() > 0 && passwordCheck.length() > 0){
             if(password.equals(passwordCheck)){
@@ -76,13 +75,17 @@ public class SignUpActivity extends AppCompatActivity {
                                 if (task.isSuccessful()) {
                                     FirebaseUser user = mAuth.getCurrentUser();
                                     String userid = user.getUid();
+                                    String email= user.getEmail();
                                     myRef = FirebaseDatabase.getInstance()
                                             .getReference("MyUsers")
                                             .child(userid);
                                     HashMap<String, String> hashMap = new HashMap<>();
                                     hashMap.put("id",userid);
+                                    hashMap.put("email",email);
                                     hashMap.put("username",username);
-                                    hashMap.put("mbti", mbti);
+                                    hashMap.put("mbti", "입력해주세요");
+                                    hashMap.put("addr","입력해주세요");
+                                    hashMap.put("age","입력해주세요");
                                     hashMap.put("imageURL","default");
                                     hashMap.put("status","offline");
                                     myRef.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {

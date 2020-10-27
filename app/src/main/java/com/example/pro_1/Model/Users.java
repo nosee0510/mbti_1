@@ -6,6 +6,8 @@ public class Users {
     private String username;
     private String imageURL;
     private String mbti;
+    private String age;
+    private String addr;
     private String status;
 
 
@@ -13,11 +15,13 @@ public class Users {
 
     }
 
-    public Users(String id, String username, String imageURL, String mbti, String status){
+    public Users(String id, String username, String imageURL, String mbti, String age, String addr, String status){
         this.id = id;
         this.username = username;
         this.imageURL = imageURL;
         this.mbti = mbti;
+        this.age = age;
+        this.addr = addr;
         this.status = status;
     }
 
@@ -63,5 +67,21 @@ public class Users {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getAddr() {
+        return addr;
+    }
+
+    public void setAddr(String addr) {
+        this.addr = addr;
+    }
+
+    public String getAge() {
+        return age;
+    }
+
+    public void setAge(String age) {
+        this.age = age;
     }
 }
