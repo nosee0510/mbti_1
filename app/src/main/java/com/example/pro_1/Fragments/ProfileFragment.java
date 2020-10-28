@@ -159,7 +159,7 @@ public class ProfileFragment extends Fragment {
                     if (image.equals("default")) {
                         imageView.setImageResource(R.drawable.ic_add_holo);
 
-                    } else {
+                    } else{
                         mRequestManager
                                 .load(image)
                                 .circleCrop()

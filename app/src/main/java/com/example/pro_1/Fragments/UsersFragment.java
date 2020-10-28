@@ -1,13 +1,16 @@
 package com.example.pro_1.Fragments;
 
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
@@ -28,6 +31,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -42,6 +46,7 @@ public class UsersFragment extends Fragment {
     private UserAdapter userAdapter;
     private List<Users> mUsers;
     public RequestManager mRequestManager;
+    EditText search_users;
 
     public UsersFragment() {
         // Required empty public constructor
@@ -55,6 +60,7 @@ public class UsersFragment extends Fragment {
         mRequestManager = Glide.with(this);
     }
 
+    /*
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater){
         inflater.inflate(R.menu.menu, menu);
         MenuItem item = menu.findItem(R.id.action_search);
@@ -89,6 +95,8 @@ public class UsersFragment extends Fragment {
         super.onCreateOptionsMenu(menu, inflater);
     }
 
+     */
+
 
 
 
@@ -105,8 +113,28 @@ public class UsersFragment extends Fragment {
             mUsers = new ArrayList<>();
 
             ReadUsers();
+
+            search_users = view.findViewById(R.id.search_users);
+            search_users.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                }
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    searchUsers(s.toString());
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {
+
+                }
+            });
+
             return view;
     }
+
 
     private void ReadUsers(){
         FirebaseUser firebaseuser = FirebaseAuth.getInstance().getCurrentUser();
@@ -119,14 +147,18 @@ public class UsersFragment extends Fragment {
                 mUsers.clear();
 
                 for(DataSnapshot snapshot: dataSnapshot.getChildren()) {
-                    Users user = snapshot.getValue(Users.class);
+                    if (search_users.getText().toString().equals("")) {
 
-                    if (!user.getId().equals(firebaseuser.getUid())) {
-                        mUsers.add(user);
+                        Users user = snapshot.getValue(Users.class);
+
+
+                        if (!user.getId().equals(firebaseuser.getUid())) {
+                            mUsers.add(user);
+                        }
+
+                        userAdapter = new UserAdapter(getContext(), mUsers, false);
+                        recyclerView.setAdapter(userAdapter);
                     }
-
-                    userAdapter = new UserAdapter(getContext(), mUsers, false);
-                    recyclerView.setAdapter(userAdapter);
                 }
 
             }
@@ -137,11 +169,13 @@ public class UsersFragment extends Fragment {
             }
         });
     }
-    private void searchUsers(String query){
+    private void searchUsers(String s){
         FirebaseUser firebaseuser = FirebaseAuth.getInstance().getCurrentUser();
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("MyUsers");
+        Query query = FirebaseDatabase.getInstance().getReference("MyUsers").orderByChild("mbti")
+                .startAt(s)
+                .endAt(s+"\uf8ff");
 
-        reference.addValueEventListener(new ValueEventListener() {
+        query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
@@ -150,19 +184,17 @@ public class UsersFragment extends Fragment {
                 for(DataSnapshot snapshot: dataSnapshot.getChildren()) {
                     Users user = snapshot.getValue(Users.class);
 
+
                     if (!user.getId().equals(firebaseuser.getUid())) {
-                        if(user.getMbti().toLowerCase().contains(query.toLowerCase())||
-                                user.getUsername().toLowerCase().contains(query.toLowerCase())) {
                             mUsers.add(user);
                         }
                     }
 
                     userAdapter = new UserAdapter(getContext(), mUsers, false);
-                    userAdapter.notifyDataSetChanged();
                     recyclerView.setAdapter(userAdapter);
                 }
 
-            }
+
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {

@@ -54,10 +54,15 @@ public class Main2Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
-
         backPressedForFinish = new BackPressedForFinish(this);
 
         FirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        if(FirebaseUser != null){
+
+        }
+        else{
+            myStartActivity(SignUpActivity.class);
+        }
         //myRef = FirebaseDatabase.getInstance().getReference("Users").child(FirebaseUser.getUid());
         /*myRef.addValueEventListener(new ValueEventListener() {
             @Override
