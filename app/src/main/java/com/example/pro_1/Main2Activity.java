@@ -46,7 +46,6 @@ public class Main2Activity extends AppCompatActivity {
     private FragmentTransaction ft;
 
 
-    Toolbar toolbar;
     private static final String TAG = "Main2Activity";
 
 

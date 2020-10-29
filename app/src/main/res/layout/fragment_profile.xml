@@ -5,12 +5,15 @@
     android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.ProfileFragment">
+    tools:context=".Fragments.ProfileFragment"
+    >
 
     <androidx.cardview.widget.CardView
+        android:backgroundTint="@color/colorPrimaryDark"
         android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -25,9 +28,10 @@
                 android:id="@+id/textView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
                 android:text="마이 페이지"
-                android:textColor="@color/colorPrimary"
-                android:textSize="34sp"
+                android:textColor="#fff"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -35,10 +39,10 @@
 
             <ImageView
                 android:id="@+id/profile_image2"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_marginTop="25dp"
                 android:src="@drawable/ic_add_holo"
-                android:layout_width="160dp"
-                android:layout_height="160dp"
-                android:layout_marginTop="32dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView4" />
@@ -47,10 +51,11 @@
                 android:id="@+id/username_profile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="9dp"
+                android:paddingBottom="14dp"
                 android:text="username"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="18sp"
+                android:textColor="#fff"
+                android:textSize="15sp"
                 android:textStyle="bold"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"

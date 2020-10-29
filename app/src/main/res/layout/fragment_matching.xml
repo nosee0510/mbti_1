@@ -26,17 +26,19 @@
 
     <Button
         android:id="@+id/button_type"
-        android:layout_width="237dp"
-        android:layout_height="50dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
         android:layout_gravity="center"
-        android:layout_marginTop="80dp"
-        android:backgroundTint="@color/colorMBTI"
-        android:drawableTint="#EAC7C7"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/background_button"
         android:shadowColor="#6E6E6E"
         android:text="궁합 알아보러 가기 ♥"
-        android:textColor="#000000"
+        android:textColor="#fff"
         android:textColorHint="#FFFFFF"
         android:textColorLink="#FFFFFF"
+        android:textStyle="bold"
         android:textSize="20dp"
         />
 

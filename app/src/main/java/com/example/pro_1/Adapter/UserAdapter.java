@@ -51,9 +51,10 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         final Users users = mUsers.get(position);
         holder.username.setText(users.getUsername());
+        holder.textView_status.setText(users.getMbti().toUpperCase());
 
         if(users.getImageURL().equals("default")){
-            holder.imageView.setImageResource(R.mipmap.ic_launcher);
+            holder.imageView.setImageResource(R.drawable.user_icon);
 
         }else{
             //Adding Glide Library
@@ -67,22 +68,19 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
         //Status Check
         if (isChat){
             if(users.getStatus().equals("online")){
-                holder.imageViewON.setVisibility(View.VISIBLE);
-                holder.imageViewOFF.setVisibility(View.INVISIBLE);
+
                 holder.textView_status.setVisibility(View.VISIBLE);
                 holder.textView_status.setText("Online");
 
             }
             else{
-                holder.imageViewON.setVisibility(View.INVISIBLE);
-                holder.imageViewOFF.setVisibility(View.VISIBLE);
+
                 holder.textView_status.setVisibility(View.VISIBLE);
                 holder.textView_status.setText("Offline");
             }
         }else{
-            holder.imageViewON.setVisibility(View.INVISIBLE);
-            holder.imageViewOFF.setVisibility(View.INVISIBLE);
-            holder.textView_status.setVisibility(View.INVISIBLE);
+
+            holder.textView_status.setVisibility(View.VISIBLE);
         }
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -103,8 +101,6 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder{
         public TextView username;
         public ImageView imageView;
-        public ImageView imageViewON;
-        public ImageView imageViewOFF;
         public TextView textView_status;
 
         public ViewHolder(@NonNull View itemView){
@@ -112,10 +108,6 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
             username=itemView.findViewById(R.id.textView2);
             imageView=itemView.findViewById(R.id.imageView3);
-            imageView.setBackground(new ShapeDrawable(new OvalShape()));
-            imageView.setClipToOutline(true);
-            imageViewON = itemView.findViewById(R.id.status_image_ON);
-            imageViewOFF = itemView.findViewById(R.id.status_image_OFF);
             textView_status = itemView.findViewById(R.id.status_textView);
 
         }

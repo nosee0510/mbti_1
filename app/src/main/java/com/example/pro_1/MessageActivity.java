@@ -37,7 +37,6 @@ import java.util.List;
 public class MessageActivity extends AppCompatActivity {
     DatabaseReference myRef;
 
-
     TextView username;
     ImageView imageView;
     ImageButton sendBtn;
@@ -61,7 +60,6 @@ public class MessageActivity extends AppCompatActivity {
 
         //위젯
         imageView = findViewById(R.id.imageview_profile);
-
 
         username = findViewById(R.id.usernamey);
         sendBtn=findViewById(R.id.btn_send);
@@ -89,8 +87,10 @@ public class MessageActivity extends AppCompatActivity {
                 Users user = dataSnapshot.getValue(Users.class);
                 username.setText(user.getUsername());
 
+
+
                 if(user.getImageURL().equals("default")){
-                    imageView.setImageResource(R.mipmap.ic_launcher);
+                    imageView.setImageResource(R.drawable.user_icon);
                 }else{
                     Glide.with(MessageActivity.this)
                             .load(user.getImageURL())

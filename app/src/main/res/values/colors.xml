@@ -4,4 +4,7 @@
     <color name="colorPrimaryDark">#fE6079</color>
     <color name="colorAccent">#03DAC5</color>
     <color name="colorMBTI">#ff9999</color>
+    <color name="leftChat">#FFB9C5</color>
+    <color name="colorUser">#f276a1</color>
+
 </resources>
