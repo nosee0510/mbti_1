@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -37,7 +38,7 @@ public class TypesFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_types, container, false);
 
-        Button btnENFP = view.findViewById(R.id.ENFP);
+        ImageButton btnENFP = view.findViewById(R.id.ENFP);
         btnENFP.setOnClickListener(new View.OnClickListener() {
             // 요청을 보내야 하는데 메인 액티비티에 다가 메소드를 하나 만들어야 한다.
             @Override
@@ -47,7 +48,7 @@ public class TypesFragment extends Fragment {
             }
         });
 
-        Button btnISTJ = view.findViewById(R.id.ISTJ);
+        ImageButton btnISTJ = view.findViewById(R.id.ISTJ);
         btnISTJ.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -57,7 +58,7 @@ public class TypesFragment extends Fragment {
             }
         });
 
-        Button btnISFJ = view.findViewById(R.id.ISFJ);
+        ImageButton btnISFJ = view.findViewById(R.id.ISFJ);
         btnISFJ.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -67,7 +68,7 @@ public class TypesFragment extends Fragment {
             }
         });
 
-        Button btnINFJ = view.findViewById(R.id.INFJ);
+        ImageButton btnINFJ = view.findViewById(R.id.INFJ);
         btnINFJ.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -77,7 +78,7 @@ public class TypesFragment extends Fragment {
             }
         });
 
-        Button btnINTJ = view.findViewById(R.id.INTJ);
+        ImageButton btnINTJ = view.findViewById(R.id.INTJ);
         btnINTJ.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -87,7 +88,7 @@ public class TypesFragment extends Fragment {
             }
         });
 
-        Button btnISTP = view.findViewById(R.id.ISTP);
+        ImageButton btnISTP = view.findViewById(R.id.ISTP);
         btnISTP.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -97,7 +98,7 @@ public class TypesFragment extends Fragment {
             }
         });
 
-        Button btnISFP = view.findViewById(R.id.ISFP);
+        ImageButton btnISFP = view.findViewById(R.id.ISFP);
         btnISFP.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -107,7 +108,7 @@ public class TypesFragment extends Fragment {
             }
         });
 
-        Button btnINFP = view.findViewById(R.id.INFP);
+        ImageButton btnINFP = view.findViewById(R.id.INFP);
         btnINFP.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -117,7 +118,7 @@ public class TypesFragment extends Fragment {
             }
         });
 
-        Button btnINTP = view.findViewById(R.id.INTP);
+        ImageButton btnINTP = view.findViewById(R.id.INTP);
         btnINTP.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -127,7 +128,7 @@ public class TypesFragment extends Fragment {
             }
         });
 
-        Button btnESTP = view.findViewById(R.id.ESTP);
+        ImageButton btnESTP = view.findViewById(R.id.ESTP);
         btnESTP.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -137,7 +138,7 @@ public class TypesFragment extends Fragment {
             }
         });
 
-        Button btnESFP = view.findViewById(R.id.ESFP);
+        ImageButton btnESFP = view.findViewById(R.id.ESFP);
         btnESFP.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -147,7 +148,7 @@ public class TypesFragment extends Fragment {
             }
         });
 
-        Button btnENTP = view.findViewById(R.id.ENTP);
+        ImageButton btnENTP = view.findViewById(R.id.ENTP);
         btnENTP.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -157,7 +158,7 @@ public class TypesFragment extends Fragment {
             }
         });
 
-        Button btnESTJ = view.findViewById(R.id.ESTJ);
+        ImageButton btnESTJ = view.findViewById(R.id.ESTJ);
         btnESTJ.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -167,7 +168,7 @@ public class TypesFragment extends Fragment {
             }
         });
 
-        Button btnENFJ = view.findViewById(R.id.ENFJ);
+        ImageButton btnENFJ = view.findViewById(R.id.ENFJ);
         btnENFJ.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -177,7 +178,7 @@ public class TypesFragment extends Fragment {
             }
         });
 
-        Button btnENTJ = view.findViewById(R.id.ENTJ);
+        ImageButton btnENTJ = view.findViewById(R.id.ENTJ);
         btnENTJ.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -187,7 +188,7 @@ public class TypesFragment extends Fragment {
             }
         });
 
-        Button btnESFJ = view.findViewById(R.id.ESFJ);
+        ImageButton btnESFJ = view.findViewById(R.id.ESFJ);
         btnESFJ.setOnClickListener(new View.OnClickListener() {
 
             @Override

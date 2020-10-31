@@ -9,13 +9,14 @@ public class Users {
     private String age;
     private String addr;
     private String status;
+    private String sex;
 
 
     public Users() {
 
     }
 
-    public Users(String id, String username, String imageURL, String mbti, String age, String addr, String status){
+    public Users(String id, String username, String imageURL, String mbti, String age, String addr, String status,String sex){
         this.id = id;
         this.username = username;
         this.imageURL = imageURL;
@@ -23,6 +24,7 @@ public class Users {
         this.age = age;
         this.addr = addr;
         this.status = status;
+        this.sex = sex;
     }
 
 
@@ -83,5 +85,13 @@ public class Users {
 
     public void setAge(String age) {
         this.age = age;
+    }
+
+    public String getSex(){
+        return sex;
+    }
+
+    public void sexSex(String sex){
+        this.sex = sex;
     }
 }

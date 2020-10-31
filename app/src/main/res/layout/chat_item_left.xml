@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="300dp"
     android:padding="8dp"
     android:layout_height="wrap_content">
-
+    <LinearLayout
+        android:id="@+id/Linear1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
     <ImageView
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:id="@+id/profile_image"
-        android:src="@mipmap/ic_launcher"/>
+        android:src="@drawable/user_icon"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -22,5 +26,35 @@
         android:textColor="#000000"
         android:textSize="15sp"
         android:background="@drawable/background_left"/>
+
+    <TextView
+        android:id="@+id/show_timer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="12sp"
+
+        android:text="02/03/2019 05:59PM"
+        android:textColor="#000"
+        android:textSize="10sp"
+        tools:layout_alignBottom="@id/show_message" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_below="@+id/Linear1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/isSeen"
+            android:gravity="end"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="textEnd"
+            android:textSize="12sp"
+            android:visibility="gone"
+            android:text="전송됨"/>
+
+
+    </LinearLayout>
 
 </RelativeLayout>

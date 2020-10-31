@@ -12,6 +12,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -23,6 +24,7 @@ import com.example.pro_1.Fragments.TestFragment;
 import com.example.pro_1.Fragments.MatchingFragment;
 import com.example.pro_1.Fragments.UsersFragment;
 import com.example.pro_1.Model.Users;
+import com.example.pro_1.notifications.Token;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
@@ -32,6 +34,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -44,6 +47,7 @@ public class Main2Activity extends AppCompatActivity {
     private BottomNavigationView bottomNavigationView; //바텀 네비
     private FragmentManager fm;
     private FragmentTransaction ft;
+    String mUID;
 
 
     private static final String TAG = "Main2Activity";
@@ -57,6 +61,11 @@ public class Main2Activity extends AppCompatActivity {
 
         FirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         if(FirebaseUser != null){
+            mUID= FirebaseUser.getUid();
+            SharedPreferences sp = getSharedPreferences("SP_USER", MODE_PRIVATE);
+            SharedPreferences.Editor editor = sp.edit();
+            editor.putString("Current_USERID", mUID);
+            editor.apply();
 
         }
         else{
@@ -91,15 +100,16 @@ public class Main2Activity extends AppCompatActivity {
         viewPagerAdapter.addFragment(new ProfileFragment(), "프로필");
 
 
-
-
-
-
         viewPager.setAdapter(viewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
 
 
+        updateToken(FirebaseInstanceId.getInstance().getToken());
+
+
+
     }
+
 
     //adding logout Functionality
 
@@ -120,6 +130,12 @@ public class Main2Activity extends AppCompatActivity {
                 return true;
         }
         return false;
+    }
+
+    private void updateToken(String token){
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Tokens");
+        Token mToken = new Token(token);
+        ref.child(mUID).setValue(mToken);
     }
 
 

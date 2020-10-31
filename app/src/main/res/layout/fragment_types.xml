@@ -3,202 +3,246 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#fff">
 
-    <Button
-        android:id="@+id/ISTJ"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="172dp"
-        android:backgroundTint="#F8B7CE"
-        android:text="ISTJ"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/ISTP"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="272dp"
-        android:backgroundTint="#FD1E6A"
-        android:text="ISTP"
-        android:textColor="#FFFFFF"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/ISFP"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:layout_marginStart="112dp"
-        android:layout_marginTop="272dp"
-        android:backgroundTint="#F8B7CE"
-        android:text="ISFP"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/ESFP"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:layout_marginStart="112dp"
-        android:layout_marginTop="368dp"
-        android:backgroundTint="#FD1E6A"
-        android:text="ESFP"
-        android:textColor="#FFFFFF"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/ENFP"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:layout_marginStart="212dp"
-        android:layout_marginTop="368dp"
-        android:backgroundTint="#F8B7CE"
-        android:text="ENFP"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
+    <ImageButton
         android:id="@+id/INFP"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:layout_marginStart="212dp"
-        android:layout_marginTop="272dp"
-        android:backgroundTint="#FD1E6A"
-        android:text="INFP"
-        android:textColor="#FFFFFF"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_width="85dp"
+        android:layout_height="95dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:background="#fff"
+        android:src="@drawable/infp"
 
-    <Button
-        android:id="@+id/INTP"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:layout_marginStart="312dp"
-        android:layout_marginTop="272dp"
-        android:backgroundTint="#F8B7CE"
-        android:text="INTP"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/ISFJ"
+        app:layout_constraintEnd_toStartOf="@+id/INFJ"
+        app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="spread" />
 
-    <Button
-        android:id="@+id/ENTP"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:layout_marginStart="312dp"
-        android:layout_marginTop="368dp"
-        android:backgroundTint="#FD1E6A"
-        android:text="ENTP"
-        android:textColor="#FFFFFF"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/ESTP"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="368dp"
-        android:backgroundTint="#F8B7CE"
-        android:text="ESTP"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/ESTJ"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="468dp"
-        android:backgroundTint="#FD1E6A"
-        android:text="ESTJ"
-        android:textColor="#FFFFFF"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/ESFJ"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:layout_marginStart="112dp"
-        android:layout_marginTop="468dp"
-        android:backgroundTint="#F8B7CE"
-        android:text="ESFJ"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/ENFJ"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:layout_marginStart="212dp"
-        android:layout_marginTop="468dp"
-        android:backgroundTint="#FD1E6A"
-        android:text="ENFJ"
-        android:textColor="#FFFFFF"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/ENTJ"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:layout_marginStart="312dp"
-        android:layout_marginTop="468dp"
-        android:backgroundTint="#F8B7CE"
-        android:text="ENTJ"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/ISFJ"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:layout_marginStart="112dp"
-        android:layout_marginTop="172dp"
-        android:backgroundTint="#FD1E6A"
-        android:text="ISFJ"
-        android:textColor="#FFFFFF"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/INTJ"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:layout_marginStart="312dp"
-        android:layout_marginTop="172dp"
-        android:backgroundTint="#FD1E6A"
-        android:text="INTJ"
-        android:textColor="#FFFFFF"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
+    <ImageButton
         android:id="@+id/INFJ"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:layout_marginStart="212dp"
-        android:layout_marginTop="172dp"
-        android:backgroundTint="#F8B7CE"
-        android:text="INFJ"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_width="85dp"
+        android:layout_height="95dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:background="#fff"
+        android:src="@drawable/infj"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/INFP"
+        app:layout_constraintEnd_toStartOf="@+id/INTJ"
+        app:layout_constraintStart_toEndOf="@+id/INFP"
+        app:layout_constraintTop_toTopOf="@+id/INFP" />
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
-        android:text="당신의 성격은?"
-        android:textColor="#CD1554"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/INFJ"
+    <ImageButton
+        android:id="@+id/INTJ"
+        android:layout_width="85dp"
+        android:layout_height="95dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:background="#fff"
+        android:src="@drawable/intj"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/INFP"
+        app:layout_constraintEnd_toStartOf="@+id/INTP"
+        app:layout_constraintStart_toEndOf="@+id/INFJ"
+        app:layout_constraintTop_toTopOf="@+id/INFP" />
+
+    <ImageButton
+        android:id="@+id/INTP"
+        android:layout_width="85dp"
+        android:layout_height="95dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="30dp"
+        android:background="#fff"
+        android:src="@drawable/intp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/INFP"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/INTJ"
+        app:layout_constraintTop_toTopOf="@+id/INFP" />
+
+    <ImageButton
+        android:id="@+id/ISFJ"
+        android:layout_width="85dp"
+        android:layout_height="95dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:background="#fff"
+        android:src="@drawable/isfj"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/ENFJ"
+        app:layout_constraintEnd_toStartOf="@+id/ISFP"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/INFP" />
+
+    <ImageButton
+        android:id="@+id/ISFP"
+        android:layout_width="85dp"
+        android:layout_height="95dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginStart="5dp"
+        android:background="#fff"
+        android:src="@drawable/isfp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/ISFJ"
+        app:layout_constraintEnd_toStartOf="@+id/ISTJ"
+        app:layout_constraintTop_toTopOf="@+id/ISFJ"
+        app:layout_constraintBottom_toBottomOf="@+id/ISFJ"
+        />
+
+    <ImageButton
+        android:id="@+id/ISTJ"
+        android:layout_width="85dp"
+        android:layout_height="95dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginStart="5dp"
+        android:background="#fff"
+        android:src="@drawable/istj"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/ISFP"
+        app:layout_constraintEnd_toStartOf="@+id/ISTP"
+        app:layout_constraintTop_toTopOf="@+id/ISFJ"
+        app:layout_constraintBottom_toBottomOf="@+id/ISFJ"
+        />
+
+    <ImageButton
+        android:id="@+id/ISTP"
+        android:layout_width="85dp"
+        android:layout_height="95dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="20dp"
+        android:background="#fff"
+        android:src="@drawable/istp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/ISFJ"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/ISTJ"
+        app:layout_constraintTop_toTopOf="@+id/ISFJ" />
+
+
+    <ImageButton
+        android:id="@+id/ENFJ"
+        android:layout_width="85dp"
+        android:layout_height="95dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="5dp"
+        android:background="#fff"
+        android:src="@drawable/enfj"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/ESFJ"
+        app:layout_constraintEnd_toStartOf="@+id/ENFP"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ISFJ" />
+
+    <ImageButton
+        android:id="@+id/ENFP"
+        android:layout_width="85dp"
+        android:layout_height="95dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginStart="5dp"
+        android:background="#fff"
+        android:src="@drawable/enfp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/ENFJ"
+        app:layout_constraintEnd_toStartOf="@+id/ENTJ"
+        app:layout_constraintTop_toTopOf="@+id/ENFJ"
+        app:layout_constraintBottom_toBottomOf="@+id/ENFJ"
+        />
+
+    <ImageButton
+        android:id="@+id/ENTJ"
+        android:layout_width="85dp"
+        android:layout_height="95dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:background="#fff"
+        android:src="@drawable/entj"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/ENFJ"
+        app:layout_constraintEnd_toStartOf="@+id/ENTP"
+        app:layout_constraintStart_toEndOf="@+id/ENFP"
+        app:layout_constraintTop_toTopOf="@+id/ENFJ" />
+
+    <ImageButton
+        android:id="@+id/ENTP"
+        android:layout_width="85dp"
+        android:layout_height="95dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="20dp"
+        android:background="#fff"
+        android:src="@drawable/entp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/ENFJ"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/ENTJ"
+        app:layout_constraintTop_toTopOf="@+id/ENFJ" />
+
+
+    <ImageButton
+        android:id="@+id/ESFJ"
+        android:layout_width="85dp"
+        android:layout_height="95dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="60dp"
+        android:background="#fff"
+        android:src="@drawable/esfj"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/ESFP"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ENFJ" />
+
+    <ImageButton
+        android:id="@+id/ESFP"
+        android:layout_width="85dp"
+        android:layout_height="95dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginStart="5dp"
+        android:background="#fff"
+        android:src="@drawable/esfp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/ESFJ"
+        app:layout_constraintEnd_toStartOf="@+id/ESTJ"
+        app:layout_constraintTop_toTopOf="@+id/ESFJ"
+        app:layout_constraintBottom_toBottomOf="@+id/ESFJ"
+        />
+
+    <ImageButton
+        android:id="@+id/ESTJ"
+        android:layout_width="85dp"
+        android:layout_height="95dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginStart="5dp"
+        android:background="#fff"
+        android:src="@drawable/estj"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/ESFP"
+        app:layout_constraintEnd_toStartOf="@+id/ESTP"
+        app:layout_constraintTop_toTopOf="@+id/ESFJ"
+        app:layout_constraintBottom_toBottomOf="@+id/ESFJ"
+        />
+
+    <ImageButton
+        android:id="@+id/ESTP"
+        android:layout_width="85dp"
+        android:layout_height="95dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="20dp"
+        android:background="#fff"
+        android:src="@drawable/estp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/ESFJ"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/ESTJ"
+        app:layout_constraintTop_toTopOf="@+id/ESFJ" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -17,6 +17,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.provider.MediaStore;
+import android.text.Html;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -68,6 +69,7 @@ import static com.google.firebase.storage.FirebaseStorage.getInstance;
 public class ProfileFragment extends Fragment {
     TextView username;
     TextView userMBTI;
+    TextView usersex;
 
     TextView userage;
     TextView useraddr;
@@ -122,6 +124,7 @@ public class ProfileFragment extends Fragment {
 
         username = view.findViewById(R.id.username_profile); //fragment_profile
         userMBTI = view.findViewById(R.id.profile_MBTI);
+        usersex= view.findViewById(R.id.profile_sex);
         userage = view.findViewById(R.id.profile_age);
         useraddr = view.findViewById(R.id.profile_addr);
         fab = view.findViewById(R.id.fab);
@@ -149,11 +152,13 @@ public class ProfileFragment extends Fragment {
                     String addr = "" + ds.child("addr").getValue();
                     String age = "" + ds.child("age").getValue();
                     String image = "" + ds.child("imageURL").getValue();
+                    String sex = "" +ds.child("sex").getValue();
 
                     username.setText(name);
-                    userMBTI.setText("MBTI: "+mbti);
-                    userage.setText("나이: "+age);
-                    useraddr.setText("주소: "+addr);
+                    userMBTI.setText(""+mbti.toUpperCase());
+                    userage.setText(""+age);
+                    useraddr.setText(""+addr);
+                    usersex.setText(""+sex);
 
 
                     if (image.equals("default")) {
@@ -251,7 +256,7 @@ public class ProfileFragment extends Fragment {
     }
 
     private void showEditProfileDialog() {
-        String options[] = {"프로필 사진 수정","MBTI 수정", "닉네임 수정", "주소 수정", "나이 수정"};
+        String options[] = {"프로필 사진 수정", "성별 수정", "MBTI 수정", "닉네임 수정", "주소 수정", "나이 수정"};
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
@@ -261,16 +266,19 @@ public class ProfileFragment extends Fragment {
             if (which == 0) {
                 pd.setMessage("사진 업데이트 중입니다");
                 SelectImage();
-            }else if (which == 1) {
+            }else if(which ==1){
+                pd.setMessage("성별 업데이트 중입니다");
+                showNameAddrAgeUpdateDialog("sex");
+            }else if (which == 2) {
                 pd.setMessage("MBTI 업데이트 중입니다");
                 showNameAddrAgeUpdateDialog("mbti");
-            }else if (which == 2) {
+            }else if (which == 3) {
                 pd.setMessage("이름 업데이트 중입니다");
                 showNameAddrAgeUpdateDialog("username");
-            } else if (which == 3) {
+            } else if (which == 4) {
                 pd.setMessage("주소 업데이트 중입니다");
                 showNameAddrAgeUpdateDialog("addr");
-            } else if (which == 4) {
+            } else if (which == 5) {
                 pd.setMessage("나이 업데이트 중입니다");
                 showNameAddrAgeUpdateDialog("age");
             }

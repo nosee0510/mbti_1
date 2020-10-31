@@ -1,5 +1,6 @@
 package com.example.pro_1;
 
+import android.content.Intent;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,6 +26,7 @@ public class PasswordResetActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         findViewById(R.id.sendButton).setOnClickListener(onClickListener);
+        findViewById(R.id.gotoLoginButton).setOnClickListener(onClickListener);
     }
 
     View.OnClickListener onClickListener = new View.OnClickListener() {
@@ -34,6 +36,10 @@ public class PasswordResetActivity extends AppCompatActivity {
                 case R.id.sendButton:
                     send();
                     break;
+                case R.id.gotoLoginButton:
+                    myStartActivity(LoginActivity1.class);
+                    break;
+
             }
         }
     };
@@ -54,5 +60,10 @@ public class PasswordResetActivity extends AppCompatActivity {
         } else {
             showToast(PasswordResetActivity.this, "이메일을 입력해 주세요.");
         }
+    }
+    private void myStartActivity(Class c) {
+        Intent intent = new Intent(this, c);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
     }
 }

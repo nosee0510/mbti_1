@@ -88,6 +88,7 @@ public class SignUpActivity extends AppCompatActivity {
                                     hashMap.put("age","입력해주세요");
                                     hashMap.put("imageURL","default");
                                     hashMap.put("status","offline");
+                                    hashMap.put("sex", "입력해주세요");
                                     myRef.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {

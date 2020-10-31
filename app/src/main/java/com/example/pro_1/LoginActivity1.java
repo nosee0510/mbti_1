@@ -54,6 +54,7 @@ public class LoginActivity1 extends AppCompatActivity {
 
         findViewById(R.id.loginButton).setOnClickListener(onClickListener);
         findViewById(R.id.gotoPasswordResetButton).setOnClickListener(onClickListener);
+        findViewById(R.id.registerbtn).setOnClickListener(onClickListener);
     }
 
 
@@ -76,6 +77,12 @@ public class LoginActivity1 extends AppCompatActivity {
                 case R.id.gotoPasswordResetButton:
                     myStartActivity(PasswordResetActivity.class);
                     break;
+
+                case R.id.registerbtn:
+                    myStartActivity(SignUpActivity.class);
+                    break;
+
+
             }
         }
     };
