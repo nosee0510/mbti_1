@@ -44,6 +44,7 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 
+
 public class MessageActivity extends AppCompatActivity {
     DatabaseReference myRef;
 
@@ -64,6 +65,7 @@ public class MessageActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
     String userid;
+    String hisID;
 
     APIService apiService;
     boolean notify = false;
@@ -92,7 +94,7 @@ public class MessageActivity extends AppCompatActivity {
 
 
         //APISERVICE
-        apiService = Client.getRetrofit("https://fcm.googleapis.com/").create(APIService.class);
+        //apiService = Client.getRetrofit("https://fcm.googleapis.com/").create(APIService.class);
 
 
 
@@ -100,19 +102,14 @@ public class MessageActivity extends AppCompatActivity {
         intent = getIntent();
         userid = intent.getStringExtra("userid");
 
+
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference("MyUsers").child(userid);
-
-
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Users user = dataSnapshot.getValue(Users.class);
                 username.setText(user.getUsername());
-
-
-
-
                 if(user.getImageURL().equals("default")){
                     imageView.setImageResource(R.drawable.user_icon);
                 }else{
@@ -124,6 +121,7 @@ public class MessageActivity extends AppCompatActivity {
 
 
                 readMessage(firebaseUser.getUid(), userid, user.getImageURL());
+
             }
 
             @Override
@@ -131,6 +129,7 @@ public class MessageActivity extends AppCompatActivity {
 
             }
         });
+
 
 
         sendBtn.setOnClickListener(new View.OnClickListener() {
@@ -150,6 +149,8 @@ public class MessageActivity extends AppCompatActivity {
         seenMessage(userid);
 
 
+
+
     }
 
     private void sendMessage(String sender, String receiver, String message){
@@ -164,23 +165,7 @@ public class MessageActivity extends AppCompatActivity {
         hashMap.put("isSeen", false);
 
         reference.child("Chats").push().setValue(hashMap);
-        String msg = message;
-        DatabaseReference database = FirebaseDatabase.getInstance().getReference("MyUsers").child(firebaseUser.getUid());
-        database.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Users user = dataSnapshot.getValue(Users.class);
-                if (notify){
-                    senNotification(receiver,user.getUsername() ,msg);
-                }
-                notify=false;
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
 
 
         //Adding user to chat fragment: 최근 채팅한것
@@ -203,9 +188,32 @@ public class MessageActivity extends AppCompatActivity {
             }
         });
 
+        final String msg = message;
+    /*
+        reference = FirebaseDatabase.getInstance().getReference("MyUsers").child(firebaseUser.getUid());
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Users user = dataSnapshot.getValue(Users.class);
+                if(notify) {
+
+
+                    senNotification(receiver, user.getUsername(), msg);
+                }
+                notify = false;
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+     */
+
 
     }
-
+/*
     private void senNotification(String receiver, String username, String message) {
         DatabaseReference allTokens = FirebaseDatabase.getInstance().getReference("Tokens");
         Query query = allTokens.orderByKey().equalTo(receiver);
@@ -214,13 +222,18 @@ public class MessageActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
                     Token token = dataSnapshot1.getValue(Token.class);
-                    Data data = new Data(firebaseUser.getUid(), username+":"+message,"New Message",userid, R.drawable.user_icon);
+                    Data data = new Data(firebaseUser.getUid(), username+":"+message,"New Message",userid, R.mipmap.ic_launcher);
                     Sender sender1 = new Sender(data,token.getToken());
                     apiService.sendNotification(sender1)
                             .enqueue(new Callback<Response>() {
                                 @Override
                                 public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
-                                    Toast.makeText(MessageActivity.this, ""+response.message(), Toast.LENGTH_SHORT).show();
+                                    if (response.code()==200){
+                                        if(response.body().success!=1){
+                                            Toast.makeText(MessageActivity.this, "Failed!", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+
                                 }
 
                                 @Override
@@ -237,6 +250,8 @@ public class MessageActivity extends AppCompatActivity {
             }
         });
     }
+    */
+
 
 
     private void readMessage(final String myid, final String userid, final String imageurl) {
@@ -257,6 +272,8 @@ public class MessageActivity extends AppCompatActivity {
                     }
 
                     messageAdapter = new MessageAdapter(MessageActivity.this, mchat, imageurl);
+                    messageAdapter.notifyDataSetChanged();
+
                     recyclerView.setAdapter(messageAdapter);
                 }
             }
@@ -276,7 +293,7 @@ public class MessageActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){
                     Chat chat = snapshot.getValue(Chat.class);
-                    if (chat.getReceiver().equals(firebaseUser.getUid()) && chat.getSender().equals(userid)){
+                    if (chat.getReceiver().equals(firebaseUser) && chat.getSender().equals(userid)){
                         HashMap<String, Object> hashMap = new HashMap<>();
                         hashMap.put("isSeen", true);
                         snapshot.getRef().updateChildren(hashMap);
@@ -314,6 +331,7 @@ public class MessageActivity extends AppCompatActivity {
         CheckStatus("offline");
         reference.removeEventListener(seenListener);
     }
+
 
 
 

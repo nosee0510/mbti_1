@@ -65,15 +65,16 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull MessageAdapter.ViewHolder holder, int position) {
-
         Chat chat = mChat.get(position);
         String timeStamp = chat.getTimestamp();
         Calendar cal = Calendar.getInstance(Locale.KOREA);
         cal.setTimeInMillis(Long.parseLong(timeStamp));
-        String dateTime = DateFormat.format("dd/MM/yyyy hh:mm aa", cal).toString();
+        String dateTime = DateFormat.format("MM/dd hh:mm aa", cal).toString();
 
         holder.show_message.setText(chat.getMessage());
         holder.show_timer.setText(dateTime);
+        boolean isSeen = chat.isSeen();
+
 
 
         if (imageURL.equals("default")) {
@@ -83,7 +84,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
         }
 
         if (position == mChat.size() - 1) {
-            if (chat.isSeen()) {
+            if (isSeen) {
                 holder.isSeen.setText("읽음");
             } else {
                 holder.isSeen.setText("전송됨");
@@ -93,7 +94,10 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
             holder.isSeen.setVisibility(View.GONE);
         }
 
+
     }
+
+
 
     @Override
     public int getItemCount(){

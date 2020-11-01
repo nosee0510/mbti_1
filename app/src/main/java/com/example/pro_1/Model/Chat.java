@@ -58,7 +58,7 @@ public class Chat {
         return isSeen;
     }
 
-    public void setSeen(boolean seen){
-        isSeen = seen;
+    public void setSeen(boolean isSeen){
+        this.isSeen = isSeen;
     }
 }

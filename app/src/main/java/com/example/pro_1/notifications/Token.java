@@ -1,7 +1,7 @@
 package com.example.pro_1.notifications;
 
 public class Token {
-
+    String username;
 
     String token;
 

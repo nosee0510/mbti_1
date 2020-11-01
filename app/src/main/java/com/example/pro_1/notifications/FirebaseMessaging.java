@@ -1,6 +1,7 @@
 package com.example.pro_1.notifications;
 
 import android.app.Notification;
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -20,19 +21,21 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
+
 public class FirebaseMessaging extends FirebaseMessagingService {
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
         super.onMessageReceived(remoteMessage);
 
+
         SharedPreferences sp = getSharedPreferences("SP_USER", MODE_PRIVATE);
         String savedCurrentUser = sp.getString("Current_USERID","None");
         String sent = remoteMessage.getData().get("sent");
         String user = remoteMessage.getData().get("user");
         FirebaseUser fuser = FirebaseAuth.getInstance().getCurrentUser();
-        if(fuser!=null && sent.equals(fuser.getUid())){
-            if(!savedCurrentUser.equals(user)){
+        if(fuser !=null && sent.equals(fuser.getUid())){
+
                 if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.O){
                     sendOAndAboveNotification(remoteMessage);
                 }
@@ -40,7 +43,7 @@ public class FirebaseMessaging extends FirebaseMessagingService {
                     sendNormalNotification(remoteMessage);
 
                 }
-            }
+
         }
     }
 
@@ -49,12 +52,13 @@ public class FirebaseMessaging extends FirebaseMessagingService {
         String icon = remoteMessage.getData().get("icon");
         String title = remoteMessage.getData().get("title");
         String body = remoteMessage.getData().get("body");
+        String id = "my_channel_01";
 
         RemoteMessage.Notification notification = remoteMessage.getNotification();
         int i =Integer.parseInt(user.replaceAll("[\\D]",""));
         Intent intent = new Intent(this, MessageActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putString("userid", user);
+        bundle.putString("hisID", user);
         intent.putExtras(bundle);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pIntent = PendingIntent.getActivity(this,i,intent,PendingIntent.FLAG_ONE_SHOT);
@@ -66,7 +70,8 @@ public class FirebaseMessaging extends FirebaseMessagingService {
                 .setContentTitle(title)
                 .setAutoCancel(true)
                 .setSound(defSoundUri)
-                .setContentIntent(pIntent);
+                .setContentIntent(pIntent)
+                .setChannelId(id);
 
         NotificationManager notificationManager  = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
         int j = 0;
@@ -84,12 +89,18 @@ public class FirebaseMessaging extends FirebaseMessagingService {
         String icon = remoteMessage.getData().get("icon");
         String title = remoteMessage.getData().get("title");
         String body = remoteMessage.getData().get("body");
+        String id = "my_channel_01";
+        CharSequence name = "what";
+        String description = "채팅알람";
+        int importance = NotificationManager.IMPORTANCE_DEFAULT;
+        NotificationChannel channel = new NotificationChannel(id, name, importance);
+        channel.setDescription(description);
 
         RemoteMessage.Notification notification = remoteMessage.getNotification();
         int i =Integer.parseInt(user.replaceAll("[\\D]",""));
         Intent intent = new Intent(this, MessageActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putString("hisid", user);
+        bundle.putString("hisID", user);
         intent.putExtras(bundle);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pIntent = PendingIntent.getActivity(this,i,intent,PendingIntent.FLAG_ONE_SHOT);

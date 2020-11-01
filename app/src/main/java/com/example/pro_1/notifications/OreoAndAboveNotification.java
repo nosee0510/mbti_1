@@ -1,5 +1,6 @@
 package com.example.pro_1.notifications;
 
+import android.annotation.TargetApi;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -13,7 +14,7 @@ import androidx.annotation.RequiresApi;
 
 public class OreoAndAboveNotification extends ContextWrapper {
 
-    private static final String ID = "some_id";
+    private static final String ID = "com.example.pro_1";
     private static final String NAME = "FirebaseAPP";
 
     private NotificationManager notificationManager;
@@ -26,10 +27,10 @@ public class OreoAndAboveNotification extends ContextWrapper {
     }
 
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
+    @TargetApi(Build.VERSION_CODES.O)
     private void createChannel(){
         NotificationChannel notificationChannel = new NotificationChannel(ID, NAME, NotificationManager.IMPORTANCE_DEFAULT);
-        notificationChannel.enableLights(true);
+        notificationChannel.enableLights(false);
         notificationChannel.enableVibration(true);
         notificationChannel.setLockscreenVisibility(Notification.VISIBILITY_PRIVATE);
     }
@@ -42,7 +43,7 @@ public class OreoAndAboveNotification extends ContextWrapper {
         return notificationManager;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
+    @TargetApi(Build.VERSION_CODES.O)
     public Notification.Builder getONotifications(String title,
                                                   String body,
                                                   PendingIntent pIntent, Uri soundUri, String icon){

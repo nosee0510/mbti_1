@@ -40,6 +40,7 @@
         <activity android:name=".MBTI_Types.esfj" />
         <activity android:name=".MBTI_Types.estj" />
         <activity android:name=".MBTI_Types.entp" />
+        <activity android:name=".MBTI_Types.entj" />
         <activity android:name=".MBTI_Types.esfp" />
         <activity android:name=".MBTI_Types.estp" />
         <activity android:name=".MBTI_Types.intp" />
@@ -77,11 +78,13 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
+
         <service android:name=".notifications.FirebaseService"
             android:enabled="true"
             android:exported="true">
             <intent-filter>
-                <action android:name="com.google.firebase.INSTANCE_ID_SERVICE"/>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
             </intent-filter>
         </service>
         <service android:name=".notifications.FirebaseMessaging"
