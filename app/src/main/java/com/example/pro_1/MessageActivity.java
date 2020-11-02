@@ -68,7 +68,7 @@ public class MessageActivity extends AppCompatActivity {
     String hisID;
 
     APIService apiService;
-    boolean notify = false;
+    //boolean notify = false;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -135,7 +135,7 @@ public class MessageActivity extends AppCompatActivity {
         sendBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                notify=true;
+                //notify=true;
                 String msg = msg_editText.getText().toString();
                 if(!msg.equals("")){
                     sendMessage(firebaseUser.getUid(), userid, msg);
@@ -322,14 +322,14 @@ public class MessageActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        CheckStatus("online");
+        //CheckStatus("online");
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        CheckStatus("offline");
-        reference.removeEventListener(seenListener);
+        //CheckStatus("offline");
+        //reference.removeEventListener(seenListener);
     }
 
 

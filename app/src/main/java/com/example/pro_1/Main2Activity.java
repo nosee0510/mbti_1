@@ -104,7 +104,7 @@ public class Main2Activity extends AppCompatActivity {
         tabLayout.setupWithViewPager(viewPager);
 
 
-        updateToken(FirebaseInstanceId.getInstance().getToken());
+        //updateToken(FirebaseInstanceId.getInstance().getToken());
 
 
 
@@ -131,13 +131,12 @@ public class Main2Activity extends AppCompatActivity {
         }
         return false;
     }
-
+    /*
     private void updateToken(String token){
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Tokens");
         Token mToken = new Token(token);
         ref.child(mUID).setValue(mToken);
-    }
-
+    }*/
 
     //CLass ViewPagerAdapter
     class ViewPagerAdapter extends FragmentPagerAdapter {
@@ -196,13 +195,13 @@ public class Main2Activity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        CheckStatus("online");
+       // CheckStatus("online");
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        CheckStatus("offline");
+       // CheckStatus("offline");
     }
 
 

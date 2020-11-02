@@ -8,42 +8,41 @@
     <RelativeLayout
 
         android:id="@+id/Linear1"
-        android:layout_width="300dp"
+        android:layout_width="400dp"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true">
 
 
-
         <ImageView
+            android:id="@+id/profile_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/profile_image"
-            android:visibility="gone"/>
+            android:visibility="gone" />
 
         <TextView
+            android:id="@+id/show_message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/background_right"
-            android:text="hello"
             android:layout_alignParentEnd="true"
-            android:id="@+id/show_message"
-            android:textSize="15sp"
-            android:textColor="#fff"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/background_right"
             android:padding="8dp"
-            android:layout_alignParentRight="true"/>
+            android:text="hello"
+            android:textColor="#fff"
+            android:textSize="15sp" />
 
         <TextView
             android:id="@+id/show_timer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/show_message"
             android:layout_marginRight="5dp"
             android:layout_toStartOf="@+id/show_message"
             android:text="02/03/2019 05:59PM"
             android:textAlignment="textEnd"
             android:textColor="#000"
-            android:textSize="10sp"
-            android:layout_alignBottom="@id/show_message" />
+            android:textSize="10sp" />
 
     </RelativeLayout>
 
